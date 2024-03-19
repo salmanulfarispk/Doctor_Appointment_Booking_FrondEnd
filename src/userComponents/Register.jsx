@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   MDBBtn,
   MDBModal,
@@ -7,9 +7,53 @@ import {
   MDBModalBody,
   
 } from 'mdb-react-ui-kit';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+
 
 export default function Register({ setShowRegisterModal }) {
   const toggleClose = () => setShowRegisterModal(false)
+
+
+
+  const SignUp= async(event)=>{
+    event.preventDefault();
+       
+    const username = event.target.USERNAME.value.trim();
+    const email = event.target.EMAIL.value.trim();
+    const password = event.target.PASSWORD.value.trim();
+       
+    // console.log("username",username)
+
+    if(!username || !email || !password){
+      toast.error("please Fill All input Fields")
+      return;
+    }
+
+      try{
+        const payload={username,email,password}
+        // console.log("payload",payload)
+
+        const response=await axios.post("http://localhost:3001/user/register",payload)
+        if(response.status===201){
+          toast.success("Registration success")
+          toggleClose();
+        }
+
+
+      }catch(error){
+        console.log("Register failed",error);
+        
+      }
+   
+
+
+  }
+
+    
+
+
+
 
   return (
     <MDBModal staticBackdrop tabIndex='-1' open={true} setOpen={setShowRegisterModal}>
@@ -22,7 +66,7 @@ export default function Register({ setShowRegisterModal }) {
             
               
 
-<form action="#" class="mb-1  space-y-3 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+<form onSubmit={SignUp} class="mb-1  space-y-3 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
       <p class="text-center text-lg font-medium">Sign Up your account</p>
 
       <div>
@@ -32,6 +76,7 @@ export default function Register({ setShowRegisterModal }) {
     type="text"
     class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
     placeholder="Enter username"
+    id='USERNAME'
   />
 
   <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -58,6 +103,7 @@ export default function Register({ setShowRegisterModal }) {
             type="email"
             class="w-full rounded-lg mt-3 border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter email"
+            id='EMAIL'
           />
 
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -86,6 +132,7 @@ export default function Register({ setShowRegisterModal }) {
             type="password"
             class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter password"
+            id='PASSWORD'
           />
 
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">

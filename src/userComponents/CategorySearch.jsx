@@ -17,8 +17,9 @@ const CategorySearch = () => {
     <Search className='h-4 w-4 mr-2'/> 
     Search</Button>
 </div>
-
-
+   
+   
+  
 </div>
   )
 }

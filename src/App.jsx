@@ -12,6 +12,7 @@ import USerReview from './page/USerReview';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import Edit from './page/Edit';
+import CategoryList from './page/CategoryList';
 
 
 
@@ -48,6 +49,8 @@ function App() {
             <Route path="UserList" element={<Userslist />} />
             <Route path="bookedUsers" element={<BookedUsers />} />
             <Route path="review" element={<USerReview />} />
+            <Route path="categorylist" element={<CategoryList />} />
+            
           </Route>
         </Routes>
       </Router>

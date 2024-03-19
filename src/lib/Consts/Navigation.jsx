@@ -1,4 +1,4 @@
-import { BookOpenCheck,LayoutPanelLeft, MessageCircleMore, Stethoscope, User, UserPlus } from "lucide-react";
+import { BookOpenCheck,Layers2,LayoutPanelLeft, MessageCircleMore, Stethoscope, User, UserPlus } from "lucide-react";
 
 
 
@@ -42,6 +42,17 @@ export const SIDEBAR_LINKS=[
     
     
   },
+
+  {
+    key:"categorylist",
+    label:"Categorylist",
+    path:"categorylist",
+    icon: <Layers2 />
+    
+    
+  },
+  
+
   {
     key:"reviews",
     label:"feedbacks",

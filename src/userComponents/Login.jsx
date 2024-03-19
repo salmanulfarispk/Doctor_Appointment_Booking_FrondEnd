@@ -30,8 +30,8 @@ const Login = () => {
     const email = emailRef.current.value.trim();
     const password = passwordRef.current.value;
 
-    // console.log("email :",email)
-    // console.log("passs :",password)
+    
+    const AdminEmail = import.meta.env.VITE_REACT_APP_ADMIN_EMAIL;
 
 
     if (email === "" || password === "") {
@@ -39,33 +39,58 @@ const Login = () => {
         return;
     }
 
+    
+    let url = "http://localhost:3001/user/login";
+
+    if (email === AdminEmail) {
+      url = "http://localhost:3001/admin/login";
+    }
+
+
+
     try {
         const payload = { email: email, password: password };
-        const url = "http://localhost:3001/admin/login";
 
         const response = await Axios.post(url, payload);
 
-        if (response.status === 200) {
+          if(response.status===200){
+            if(email===AdminEmail){
 
-            localStorage.setItem("role", "Admin");
-            localStorage.setItem("AdminJWT", response.data.token);
-            navigate("/adminHome");
-            toast.success("Admin Login successful!");
+             localStorage.setItem("role", "admin")
+             localStorage.setItem("AdminJWT", response.data.token);
+             navigate("/adminHome")
+             toast.success("Admin Login succesfully")
 
-        } else {
+            }else{
 
-            toast.error("Login failed:", response.error);
-        }
-        
+              localStorage.setItem("userId",response.data.data.userid)
+              localStorage.setItem("jwt",response.data.data.token)
+              localStorage.setItem("userEmail",response.data.data.email)
+              localStorage.setItem("username",response.data.data.username)
+
+               
+              setTimeout(()=>{
+                localStorage.removeItem("AdminJWT")
+                localStorage.removeItem("userId")
+                localStorage.removeItem("jwt")
+                localStorage.removeItem("userEmail")
+                localStorage.removeItem("username")
+              },5300000)
+
+              navigate("/");
+              toast.success("Login successfully");
+            }
+          }else{
+            toast.error("Login Failed:",response.error);
+          }
+
+
+
     } catch (error) {
         console.log("Error:", error);
-        toast.error("An error occurred during login.");
+        toast.error("Invalid email or password");
     }
 };
-
-
-
-
 
 
 
