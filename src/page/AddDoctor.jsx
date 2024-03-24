@@ -154,6 +154,10 @@ const AddDoctor = () => {
                         <MDBDropdownItem link onClick={()=>{handleCategorySelect("Otology")}}>Otology</MDBDropdownItem>
                         <MDBDropdownItem link onClick={()=>{handleCategorySelect("General Doctor")}}>General Doctor</MDBDropdownItem>
                         <MDBDropdownItem link onClick={()=>{handleCategorySelect("Surgon")}}>Surgon</MDBDropdownItem>
+                        <MDBDropdownItem link onClick={()=>{handleCategorySelect("Pediatrician")}}>Pediatrician</MDBDropdownItem>
+                        <MDBDropdownItem link onClick={()=>{handleCategorySelect("Gynecologist")}}>Gynecologist</MDBDropdownItem>
+
+
 
                       </MDBDropdownMenu>
                     </MDBDropdown>

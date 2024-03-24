@@ -199,16 +199,10 @@ const Login = () => {
         <p className="text-sm text-gray-500">
           No account ? 
           <a className="underline text-blue-900 cursor-pointer ms-1" onClick={handleSignUpClick}>Sign up</a>
-          <a className='ms-3 text-blue-900'> Or&nbsp;&nbsp; sign in with <Google/></a>
+          <a className='ms-3 text-blue-900 hover:cursor-pointer'> Or&nbsp;&nbsp; sign in with <Google/></a>
             
         </p>
-       
-         {/* <button
-          type="submit"
-          className="inline-block rounded-lg bg-blue-600 px-5 py-3 text-xs font-medium text-white hover:bg-blue-700 "
-        >
-          Sign In
-        </button>  */}
+      
         <Button>Sign in</Button>
       </div> 
 

@@ -41,6 +41,7 @@ const CategoryList = () => {
       }
     } catch (error) {
       console.log("error", error)
+      
     }
   };
 

@@ -37,7 +37,7 @@ export default function Sidebar() {
       <div className="flex items-center text-red-700 hover:text-red-500 hover:cursor-pointer" onClick={()=>{
        localStorage.removeItem("role")
        localStorage.removeItem("AdminJWT")
-        navigate('/login')
+        navigate('/')
   }}>
   <span className="text-xl ms-2" ><LogOut/></span> SignOut
 </div>

@@ -4,6 +4,8 @@ import Hero from './Hero'
 import CategorySearch from './CategorySearch'
 import Register from './Register'
 import Sidebar from '@/page/Sidebar'
+import PopularDoc from './PopularDoc'
+import Footer from './Footer'
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
 
         <Hero/>
         <CategorySearch />
+        <PopularDoc/>
+        <Footer/>
 
       
    
