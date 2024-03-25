@@ -2,10 +2,10 @@ import React from 'react'
 import Header from './Header'
 import Hero from './Hero'
 import CategorySearch from './CategorySearch'
-import Register from './Register'
-import Sidebar from '@/page/Sidebar'
 import PopularDoc from './PopularDoc'
 import Footer from './Footer'
+import Layoutt from './Category/Layoutt'
+
 
 const Home = () => {
   return (
@@ -19,6 +19,9 @@ const Home = () => {
         <CategorySearch />
         <PopularDoc/>
         <Footer/>
+
+      
+
 
       
    

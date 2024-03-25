@@ -4,10 +4,13 @@ import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import CategorySide from './Category/CategorySide'
 
 const CategorySearch = () => {
   const [categoryName, setCategoryName] = useState('');
   const [categorylist,setCategorylist]=useState([])
+   const navigate=useNavigate()
 
   const Searching=async()=>{
 
@@ -55,7 +58,7 @@ const ListCategory=async()=>{
   };
 
   const response=await axios.get("http://localhost:3001/user/categorylist",verifyToken)
-  console.log("data",response.data.data)
+  // console.log("data",response.data.data)
   if (response.status === 200) {
     setCategorylist(response.data.data);
     // console.log(response.data.data)
@@ -89,29 +92,35 @@ const ListCategory=async()=>{
     Search</Button>
 </div>
    
-   <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 mt-5'>
+   <div  className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 mt-5'>
+
    {categorylist.length >0 ?categorylist.map((item,index)=>index<6&&(
-    <div key={index} className='flex flex-col text-center gap-2 cursor-pointer items-center p-5 bg-blue-50 m-2 rounded-lg hover:scale-110 transition-all ease-in-out'>
+    <div    onClick={()=>{
+      navigate(`Categorydetails/${item.categoryname}`);}}
+         key={index} className='flex flex-col text-center gap-2 cursor-pointer items-center p-5 bg-blue-50 m-2 rounded-lg hover:scale-110 transition-all ease-in-out'>
        <img src={item.image}
        alt='icon'
        width={40}
        height={40}
        />
        <label className='text-blue-600  text-sm'>{item.categoryname}</label>
-
+    
       </div>
 
    ))
   :
   [1,2,3,4,,5,6].map((item,index)=>(
-    <div className='h-[170px] w-[170px] m-2 bg-slate-200 animate-pulse rounded-lg'>
+    <div key={index} className='h-[170px] w-[170px] m-2 bg-slate-200 animate-pulse rounded-lg'>
      </div>
   ))
   
   }
-   
    </div>
+    
+  
+  
 </div>
+
   )
 }
 

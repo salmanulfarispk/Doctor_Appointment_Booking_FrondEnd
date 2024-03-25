@@ -13,6 +13,8 @@ import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import Edit from './page/Edit';
 import CategoryList from './page/CategoryList';
+import Layoutt from './userComponents/Category/Layoutt';
+import CategoryDetails from './userComponents/Category/CategoryDetails';
 
 
 
@@ -41,6 +43,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/Categorydetails/:name' element={<Layoutt/>}>
+            <Route path="category/:name" element={<CategoryDetails />} />
+          </Route>
+
 
           {/* Admin */}
           <Route path="/adminHome" element={<AdminHome />}>

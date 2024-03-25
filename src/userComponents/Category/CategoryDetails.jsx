@@ -1,42 +1,43 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 
+const CategoryDetails = () => {
+const [CategryDet,setCAtDetail]=useState([])
+   const categoryname=useParams()
+   const {name}=categoryname;
+//    console.log(name)
 
-const PopularDoc = () => {
-   
-  const [popDoctor,setPopDoc]=useState([])
-
-  const popDocs=async()=>{
+  const DocCategory=async()=>{
     try{
-      const verifyToken={
+       const jwtToken={
         headers:{
-          Authorization:`${localStorage.getItem("jwt")}`
-        }
-     };
+            Authorization:`${localStorage.getItem("jwt")}`
+        }};
 
-     const response=await axios.get("http://localhost:3001/user/doctors/popularDoctors",verifyToken)
-     if(response.status==200){
-        setPopDoc(response.data.data)
-        // console.log("pop",response.data.data)
-     }
+        const response=await axios.get(`http://localhost:3001/user/${name}`,jwtToken)
+        if(response.status===200){
+            console.log("data",response.data.data)
+            setCAtDetail(response.data.data)
+        }
+
     }catch(err){
-       console.log("Error occur:",err)
+      console.log("err",err)
     }
   }
 
-
   useEffect(()=>{
-    popDocs();
-  },[])
+    DocCategory();
+  },[name])
 
 
   return (
-    <div className='mb-10 px-10'>
-        <h2 className='font-bold text-2xl'>Popular Doctors</h2>
+    <div className='mb-10 px-10 mt-5'>
+        <h2 className='font-bold text-2xl'>{name}</h2>
 
         <div className='mt-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3
         gap-7 lg:grid-cols-4'>
-       {popDoctor.length>0? popDoctor.map((item,index)=>(
+       {CategryDet.length>0? CategryDet.map((item,index)=>(
 
           <div key={index} className='border-[1px] rounded-lg p-3 cursor-pointer
            hover:border-primary hover:shadow-sm'>
@@ -62,7 +63,7 @@ const PopularDoc = () => {
         
        : 
 
-        [1,2,3,4,5,6].map((item,index)=>(
+        [1,2].map((item,index)=>(
           <div key={index} className='h-[220px] bg-slate-200 w-full rounded-lg animate-pulse'>
            
           </div>
@@ -77,4 +78,4 @@ const PopularDoc = () => {
   )
 }
 
-export default PopularDoc
+export default CategoryDetails
