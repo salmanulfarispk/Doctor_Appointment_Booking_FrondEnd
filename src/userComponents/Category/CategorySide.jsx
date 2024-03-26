@@ -26,13 +26,9 @@ const CategorySide = () => {
 
 const ListCategory=async()=>{
     try{
-     const verifyToken={
-      headers:{
-        Authorization:`${localStorage.getItem("jwt")}`
-      }
-    };
-  
-    const response=await axios.get("http://localhost:3001/user/categorylist",verifyToken)
+    
+
+    const response=await axios.get("http://localhost:3001/user/categorylist")
     // console.log("data",response.data.data)
     if (response.status === 200) {
       setCategorylist(response.data.data);
@@ -53,7 +49,7 @@ const ListCategory=async()=>{
   <CommandInput placeholder="Type a command or search..." />
   <CommandList className='overflow-visible'>
     <CommandEmpty>No results found.</CommandEmpty>
-    <CommandGroup heading="Suggestions">
+    <CommandGroup heading="Suggestions" >
      {categorylist && categorylist.map((item,index)=>(
 
      <CommandItem key={index}> 

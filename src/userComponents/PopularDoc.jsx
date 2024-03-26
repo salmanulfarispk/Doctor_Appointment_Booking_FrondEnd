@@ -8,13 +8,7 @@ const PopularDoc = () => {
 
   const popDocs=async()=>{
     try{
-      const verifyToken={
-        headers:{
-          Authorization:`${localStorage.getItem("jwt")}`
-        }
-     };
-
-     const response=await axios.get("http://localhost:3001/user/doctors/popularDoctors",verifyToken)
+     const response=await axios.get("http://localhost:3001/user/doctors/popularDoctors")
      if(response.status==200){
         setPopDoc(response.data.data)
         // console.log("pop",response.data.data)

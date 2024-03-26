@@ -51,13 +51,8 @@ const CategorySearch = () => {
 
 const ListCategory=async()=>{
   try{
-   const verifyToken={
-    headers:{
-      Authorization:`${localStorage.getItem("jwt")}`
-    }
-  };
-
-  const response=await axios.get("http://localhost:3001/user/categorylist",verifyToken)
+  
+  const response=await axios.get("http://localhost:3001/user/categorylist")
   // console.log("data",response.data.data)
   if (response.status === 200) {
     setCategorylist(response.data.data);

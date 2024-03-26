@@ -9,15 +9,15 @@ const Layoutt = () => {
   return (
     <div>
         <Header/>
-    <div className='grid grid-cols-4'>
+    <div className='grid grid-cols-4 '>
         
-     <span className='hidden md:block'><CategorySide/></span>
+     <span><CategorySide/></span>
 
 
 
      
   
-  <div className='col-span-5 md:col-span-3'>
+  <div className='col-span-4 md:col-span-3'>
 
     <Outlet/>
   </div>

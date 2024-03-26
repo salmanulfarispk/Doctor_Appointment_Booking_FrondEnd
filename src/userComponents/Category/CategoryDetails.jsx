@@ -1,23 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CategoryDetails = () => {
 const [CategryDet,setCAtDetail]=useState([])
+const navigate=useNavigate()
    const categoryname=useParams()
    const {name}=categoryname;
 //    console.log(name)
 
   const DocCategory=async()=>{
     try{
-       const jwtToken={
-        headers:{
-            Authorization:`${localStorage.getItem("jwt")}`
-        }};
+  
 
-        const response=await axios.get(`http://localhost:3001/user/${name}`,jwtToken)
+        const response=await axios.get(`http://localhost:3001/user/${name}`)
         if(response.status===200){
-            console.log("data",response.data.data)
+            // console.log("data",response.data.data)
             setCAtDetail(response.data.data)
         }
 
@@ -31,8 +29,20 @@ const [CategryDet,setCAtDetail]=useState([])
   },[name])
 
 
+  const isUser=localStorage.getItem("userId")
+  const hanleBokking=(docName)=>{
+    if(isUser){
+      navigate(`/details/${docName}`);
+    }else{
+       navigate('/login')
+    }
+  }
+
+
+
+
   return (
-    <div className='mb-10 px-10 mt-5'>
+    <div className='mb-10 px-10 mt-5 md:mt-0'>
         <h2 className='font-bold text-2xl'>{name}</h2>
 
         <div className='mt-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3
@@ -54,7 +64,9 @@ const [CategryDet,setCAtDetail]=useState([])
             <h2 className='text-primary text-sm'>{item.experience} Years</h2>
             <h2 className='text-gray-500 text-sm'>{item.hospital}</h2>
             <h2 className='p-2 px-3 border border-primary rounded-full w-full text-center text-xs
-             mt-2 hover:bg-primary hover:text-white cursor-pointer'>Book Now</h2>
+             mt-2 hover:bg-primary hover:text-white cursor-pointer' onClick={()=>{
+               hanleBokking(item.name)
+             }} >Book Now</h2>
 
             </div>
 
@@ -63,7 +75,7 @@ const [CategryDet,setCAtDetail]=useState([])
         
        : 
 
-        [1,2].map((item,index)=>(
+        [1,2,3,4,5,6].map((item,index)=>(
           <div key={index} className='h-[220px] bg-slate-200 w-full rounded-lg animate-pulse'>
            
           </div>

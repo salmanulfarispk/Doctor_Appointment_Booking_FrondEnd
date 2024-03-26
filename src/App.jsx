@@ -10,11 +10,11 @@ import Userslist from './page/Userslist';
 import BookedUsers from './page/BookedUsers';
 import USerReview from './page/USerReview';
 import axios from 'axios';
-import { Toaster } from 'react-hot-toast';
-import Edit from './page/Edit';
+import { Toaster } from 'react-hot-toast'
 import CategoryList from './page/CategoryList';
 import Layoutt from './userComponents/Category/Layoutt';
 import CategoryDetails from './userComponents/Category/CategoryDetails';
+import Details from './userComponents/Details';
 
 
 
@@ -43,9 +43,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/details/:docName" element={<Details />} />
+           
           <Route path='/Categorydetails/:name' element={<Layoutt/>}>
             <Route path="category/:name" element={<CategoryDetails />} />
           </Route>
+            
+
 
 
           {/* Admin */}

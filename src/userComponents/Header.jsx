@@ -1,12 +1,39 @@
 import { Button } from '@/components/ui/button'
-import classNames from 'classnames'
-
-import React from 'react'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+  } from "@/components/ui/popover"
+import { CircleUserRound } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 
 
 const Header = () => {
     const navigate=useNavigate()
+    const [Loggin,setLoggin]=useState(false)
+    const [username,setUsername]=useState([])
+
+    useEffect(()=>{
+        const UserName=localStorage.getItem("username")
+        if(UserName){
+            setLoggin(true)
+            setUsername(UserName)
+        }else{
+            setLoggin(false)
+        }
+    },[setLoggin,setUsername])
+
+
+    const logout=()=>{
+        localStorage.removeItem("username")
+        setUsername('')
+        localStorage.removeItem("jwt")
+        localStorage.removeItem("userEmail")
+        localStorage.removeItem("userId")
+        setLoggin(!Loggin)
+    }
+
   
     const menu = [
         {
@@ -55,9 +82,29 @@ const Header = () => {
 
      </div>
 
+    {!Loggin ?
     <Button onClick={() => navigate("/login")}>Get Started</Button> 
-   
+    
+    :
 
+    <Popover>
+  <PopoverTrigger>
+  <CircleUserRound  className='text-gray-700' width={35} height={35} />
+  </PopoverTrigger>
+  <PopoverContent className='w-44'>
+    <ul className='flex flex-col gap-1 font-mono'>
+      <li className='cursor-pointer hover:bg-slate-100 p-2 rounded-md'>My Booking</li>
+      <li onClick={logout} className='cursor-pointer hover:bg-slate-100 p-2 rounded-md'>Logout</li>
+
+    </ul>
+
+  </PopoverContent>
+</Popover>
+
+       
+   
+   
+}
     </div>
   )
 }
