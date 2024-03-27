@@ -4,7 +4,7 @@ import Hero from './Hero'
 import CategorySearch from './CategorySearch'
 import PopularDoc from './PopularDoc'
 import Footer from './Footer'
-import Layoutt from './Category/Layoutt'
+
 
 
 const Home = () => {
@@ -19,15 +19,6 @@ const Home = () => {
         <CategorySearch />
         <PopularDoc/>
         <Footer/>
-
-      
-
-
-      
-   
-
-
-
 
     </div>
   )

@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 const PopularDoc = () => {
    
   const [popDoctor,setPopDoc]=useState([])
+  const navigate=useNavigate()
 
   const popDocs=async()=>{
     try{
@@ -22,6 +25,17 @@ const PopularDoc = () => {
   useEffect(()=>{
     popDocs();
   },[])
+
+  
+  const isUser=localStorage.getItem("userId")
+  const hanleBokking=(docName)=>{
+    if(isUser){
+      navigate(`/details/${docName}`);
+    }else{
+       navigate('/login')
+       toast.error("please Ligin")
+    }
+  }
 
 
   return (
@@ -47,7 +61,9 @@ const PopularDoc = () => {
             <h2 className='text-primary text-sm'>{item.experience} Years</h2>
             <h2 className='text-gray-500 text-sm'>{item.hospital}</h2>
             <h2 className='p-2 px-3 border border-primary rounded-full w-full text-center text-xs
-             mt-2 hover:bg-primary hover:text-white cursor-pointer'>Book Now</h2>
+             mt-2 hover:bg-primary hover:text-white cursor-pointer' onClick={()=>{
+              hanleBokking(item.name)
+            }}>Book Now</h2>
 
             </div>
 

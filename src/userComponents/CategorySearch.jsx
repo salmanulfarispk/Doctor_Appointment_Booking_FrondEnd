@@ -5,7 +5,7 @@ import { Search } from 'lucide-react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import CategorySide from './Category/CategorySide'
+
 
 const CategorySearch = () => {
   const [categoryName, setCategoryName] = useState('');
@@ -20,14 +20,8 @@ const CategorySearch = () => {
         return;
       }
 
-    
-      const verifyToken={
-        headers:{
-          Authorization:`${localStorage.getItem("jwt")}`
-        }
-      };
 
-      const response=await axios.get(`http://localhost:3001/user/search/${categoryName}`, verifyToken);
+      const response=await axios.get(`http://localhost:3001/user/search/${categoryName}`);
       if (response.status === 200) {
         console.log("Datas", response.data.data);
         if (response.data.data.length === 0) {
@@ -89,8 +83,9 @@ const ListCategory=async()=>{
    
    <div  className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 mt-5'>
 
-   {categorylist.length >0 ?categorylist.map((item,index)=>index<6&&(
-    <div    onClick={()=>{
+   {categorylist.length > 0 ? categorylist.map((item,index)=>index<6&&(
+
+    <div  onClick={()=>{
       navigate(`Categorydetails/${item.categoryname}`);}}
          key={index} className='flex flex-col text-center gap-2 cursor-pointer items-center p-5 bg-blue-50 m-2 rounded-lg hover:scale-110 transition-all ease-in-out'>
        <img src={item.image}
