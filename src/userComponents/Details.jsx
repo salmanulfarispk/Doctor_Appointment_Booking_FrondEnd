@@ -60,7 +60,7 @@ const Details = () => {
 
 
        {/* for doctor sugesions */}
-          <div>
+          <div className={window.innerWidth <= 640 ? 'mt-4' : ''}>
          <DoctorSuggestion/>
           </div>
 

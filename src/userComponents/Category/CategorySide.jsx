@@ -57,7 +57,7 @@ const ListCategory=async()=>{
             navigate(`category/${item.categoryname}`)
         }}
         className={`p-2 flex gap-2 text-[13px] text-blue-600 items-center rounded-md w-full
-                 ${name==item.categoryname&&'bg-blue-100'}`}>
+                 ${name===item.categoryname&&'bg-blue-100'}`}>
             <img src={item.image}
             alt='icon'
             width={25}

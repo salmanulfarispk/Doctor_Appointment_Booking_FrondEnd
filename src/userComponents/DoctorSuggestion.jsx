@@ -36,12 +36,12 @@ const DocSuggestion=async()=>{
 
   return (
 
-    <div className='p-2 border-[1px] rounded-md md:ml-5'>
+    <div className='p-2 border-[1px] rounded-md md:ml-5 overflow-y-scroll '>
 
-   <h2 className='mb-3 font-bold px-1'>Suggestions</h2>
+   <h2 className='mt-1 mb-3 font-bold px-1'>Suggestions</h2>
   {DocSuggest.map((item,index)=>(
-   <div key={index} className='mb-3 p-2 shadow-sm w-full cursor-pointer hover:bg-slate-100 rounded-lg 
-   flex items-center gap-3'
+   <div key={index} className='mb-3 mt-4 p-2 shadow-inner w-full cursor-pointer hover:bg-slate-100 rounded-lg 
+   flex items-center gap-4'
    onClick={()=> navigate(`/details/${item.name}`)}>
 
     <img src={item.image}

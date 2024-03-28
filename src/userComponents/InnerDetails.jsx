@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
 import { GraduationCap, MapPin } from 'lucide-react'
 import React from 'react'
+import BookAppointment from './BookAppointment'
 
 export default function InnerDetails({doctor}) {
 
@@ -66,10 +66,8 @@ const socialmedialist=[
 
   ))}
   </div>
-
-  {/* <Button className='mt-2 rounded-full mb-2'>Book Appointment</Button> */}
-  <button className=' text-gray-100 mt-2 rounded-full mb-2 bg-primary/90 px-3 py-2 hover:text-gray-50 
-  hover:bg-blue-800'>Book Appointment</button>
+ 
+   <BookAppointment/>
 
 </div>
 </div>
