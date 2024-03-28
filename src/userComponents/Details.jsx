@@ -34,11 +34,9 @@ const Details = () => {
    }
    
     useEffect(()=>{
-      DocDetails();
+       DocDetails();
     },[docName])
    
-
-
   return (
     
      <>

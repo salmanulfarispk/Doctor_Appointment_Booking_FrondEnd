@@ -29,6 +29,8 @@ const socialmedialist=[
 ]
 
 
+
+
   return (
     <>
     <div className='grid grid-cols-1  md:grid-cols-3 border-[1px] p-3 rounded-lg'>
@@ -67,7 +69,7 @@ const socialmedialist=[
   ))}
   </div>
  
-   <BookAppointment/>
+   <BookAppointment doctorid={doctor._id}/>
 
 </div>
 </div>
