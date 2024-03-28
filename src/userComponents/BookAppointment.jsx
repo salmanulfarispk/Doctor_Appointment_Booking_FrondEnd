@@ -62,10 +62,9 @@ export default function BookAppointment() {
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
-      <DialogTitle>Book Appointment</DialogTitle>
       <DialogDescription>
          <div>     
-            <div className='grid grid-cols-1 md:grid-cols-2 mt-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 mt-2'>
             <div className='flex flex-col gap-3 items-baseline'>
                 <h2 className='flex gap-2 items-center'>
                     <CalendarDays className='text-primary h-5 w-5'/>
@@ -79,7 +78,7 @@ export default function BookAppointment() {
               className="rounded-md border"
             />
              </div>
-            <div className='mt-1 md:mt-0'>
+            <div className='mt-2 md:mt-0'>
                 <h2 className='flex gap-2 items-center mb-3'>
                 <Clock className='text-primary h-5 w-5'/>
                 Select Time Slot
@@ -93,18 +92,21 @@ export default function BookAppointment() {
  
               </div>
               </div>
-            </div>
+              <textarea placeholder='Note..' cols="1" rows="3" className='border-[1px] mt-2' ></textarea>
+
+            </div>            
+
          </div> 
 
       </DialogDescription>
     </DialogHeader>
-    <DialogFooter className="sm:justify-start">
+    <DialogFooter className="sm:justify-end">
           <DialogClose asChild>
             <>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-            <Button type="button" variant="primary">
+            <Button type='button' variant='outline' className='mb-5 text-red-500 px-3 py-1
+            hover:bg-white border-red-500 border-[1px] hover:text-red-500'
+            >close</Button>
+            <Button type="button" disabled={!(date&&selectedSlot)}>
               Submit
             </Button>
             </>
@@ -112,6 +114,7 @@ export default function BookAppointment() {
         </DialogFooter>
   </DialogContent>
 </Dialog>
+          
 
     </div>
   )
