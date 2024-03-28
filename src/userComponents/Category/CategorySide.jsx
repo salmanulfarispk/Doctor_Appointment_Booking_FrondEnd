@@ -11,7 +11,7 @@ import {
   } from "@/components/ui/command"
   
 import axios from 'axios'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import {useNavigate, useParams } from 'react-router-dom'
   
 
 const CategorySide = () => {
@@ -44,14 +44,14 @@ const ListCategory=async()=>{
    },[])
 
   return (
-    <div className='h-screen mt-5 flex flex-col m-3 '>
+    <div className='mt-5 flex flex-col m-3 '>
   <Command>
   <CommandInput placeholder="Type a command or search..." />
   <CommandList className='overflow-visible'>
     <CommandEmpty>No results found.</CommandEmpty>
     <CommandGroup heading="Suggestions" >
      {categorylist && categorylist.map((item,index)=>(
-
+     
      <CommandItem key={index}> 
         <li onClick={()=>{
             navigate(`category/${item.categoryname}`)

@@ -44,10 +44,10 @@ const navigate=useNavigate()
 
 
   return (
-    <div className='mb-10 px-10 mt-5 md:mt-0'>
+    <div className='mb-10 px-10 mt-5'>
         <h2 className='font-bold text-2xl'>{name}</h2>
 
-        <div className='mt-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3
+        <div className='mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
         gap-7 lg:grid-cols-4'>
        {CategryDet.length>0? CategryDet.map((item,index)=>(
 

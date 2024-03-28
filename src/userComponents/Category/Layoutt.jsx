@@ -1,31 +1,28 @@
 import React from 'react'
 import CategorySide from './CategorySide'
-import { Outlet } from 'react-router-dom'
 import Header from '../Header'
 import Footer from '../Footer'
+import CategoryDetails from './CategoryDetails'
 
 
 const Layoutt = () => {
   return (
-    <div>
-        <Header/>
-    <div className='grid grid-cols-4 '>
-        
-     <span><CategorySide/></span>
-
-
-
-     
-  
-  <div className='col-span-4 md:col-span-3'>
-
-    <Outlet/>
+<>
+  <Header/>
+<div className='flex flex-wrap'>
+  <div className='md:w-1/4 '>
+    <CategorySide/>
   </div>
 
-    </div>
+  <div className='md:w-3/4'>
+    <CategoryDetails/>
+       </div>
 
-    <Footer/>
-    </div>
+</div>
+
+<Footer/>
+</>
+
   )
 }
 

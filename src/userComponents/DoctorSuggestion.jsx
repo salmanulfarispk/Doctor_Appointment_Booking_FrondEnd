@@ -40,8 +40,10 @@ const DocSuggestion=async()=>{
 
    <h2 className='mb-3 font-bold px-1'>Suggestions</h2>
   {DocSuggest.map((item,index)=>(
-   <div key={index} className='mb-3 p-2 shadow-sm w-full cursor-pointer hover:bg-slate-100 rounded-lg flex items-center gap-3'
+   <div key={index} className='mb-3 p-2 shadow-sm w-full cursor-pointer hover:bg-slate-100 rounded-lg 
+   flex items-center gap-3'
    onClick={()=> navigate(`/details/${item.name}`)}>
+
     <img src={item.image}
     alt='doctor-image'
     width={70} height={70}
