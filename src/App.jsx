@@ -35,7 +35,7 @@ function App() {
     <>
      <Toaster
   position="top-center"
-  reverseOrder={true}
+  reverseOrder={false}
        />
 
 

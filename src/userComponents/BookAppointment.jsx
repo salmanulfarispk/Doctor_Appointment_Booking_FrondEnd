@@ -12,7 +12,8 @@ import { Calendar } from "@/components/ui/calendar"
 import { CalendarDays, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import axios from 'axios'
-import toast from 'react-hot-toast'
+import { toast } from "sonner"
+
 
 export default function BookAppointment({ doctorid }) {
   const [date, setDate] = useState(new Date())
@@ -95,9 +96,9 @@ export default function BookAppointment({ doctorid }) {
      };
 
     const response=await axios.post("http://localhost:3001/user/Details/Doctor/BookAppointment",bookingData,verifytoken)
-      console.log(response.data.appointment);
+      // console.log(response.data.appointment);
        if(response.status===200){
-        toast.success("Booking success")
+        toast("Booking succes")
         setSubmitted(true)
        }
 
@@ -108,13 +109,18 @@ export default function BookAppointment({ doctorid }) {
     
     }
 
+  
+
   return (
     <div>
-      <Dialog>
+       
+      <Dialog>         
         <DialogTrigger>
           <button className=' text-gray-100 mt-2 rounded-full mb-2 bg-primary/90 px-3 py-2 hover:text-gray-50 hover:bg-blue-800'>Book Appointment</button>
         </DialogTrigger>
         <DialogContent>
+  
+
           <DialogHeader>
             <DialogDescription>
               <div>
@@ -144,7 +150,7 @@ export default function BookAppointment({ doctorid }) {
                       ))}
                     </div>
                   </div>
-                  <textarea placeholder='Note..' cols="1" rows="3" className='border-[1px] mt-2' value={note} onChange={(e) => setNote(e.target.value)}></textarea>
+                  <textarea placeholder=' Note..' cols="4" rows="3" className='border-[1px] mt-2' value={note} onChange={(e) => setNote(e.target.value)}></textarea>
 
                 </div>
               </div>
@@ -153,7 +159,7 @@ export default function BookAppointment({ doctorid }) {
           <DialogFooter className="sm:justify-end">
             <DialogClose asChild>
               <>
-                <Button type='button' variant='outline' className='mb-5 text-red-500 px-3 py-1 hover:bg-white border-red-500 border-[1px] hover:text-red-500'>close</Button>
+                
                 <Button type="button" disabled={!(date && selectedSlot) || submitted} onClick={() => {
                   
                   SubmitBokkingDetails();
