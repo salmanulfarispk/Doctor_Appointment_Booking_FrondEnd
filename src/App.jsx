@@ -15,6 +15,7 @@ import CategoryList from './page/CategoryList';
 import Layoutt from './userComponents/Category/Layoutt';
 import CategoryDetails from './userComponents/Category/CategoryDetails';
 import Details from './userComponents/Details';
+import MyBooking from './userComponents/MyBooking';
 
 
 
@@ -44,6 +45,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/details/:docName" element={<Details />} />
+          <Route path="/mybooking" element={<MyBooking/>} />
+
            
           <Route path='/Categorydetails/:name' element={<Layoutt/>}>
             <Route path="category/:name" element={<CategoryDetails />} />

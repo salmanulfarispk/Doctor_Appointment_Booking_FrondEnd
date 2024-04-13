@@ -27,7 +27,7 @@ const navigate=useNavigate()
 
   useEffect(()=>{
     DocCategory();
-  },[name])
+  },[CategryDet])
 
 
   const isUser=localStorage.getItem("userId")

@@ -32,8 +32,8 @@ const PopularDoc = () => {
     if(isUser){
       navigate(`/details/${docName}`);
     }else{
-       navigate('/login')
        toast.error("please Ligin")
+       navigate('/login')
     }
   }
 

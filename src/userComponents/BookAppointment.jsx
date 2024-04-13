@@ -15,6 +15,9 @@ import axios from 'axios'
 import { toast } from "sonner"
 
 
+
+
+
 export default function BookAppointment({ doctorid }) {
   const [date, setDate] = useState(new Date())
   const [TimeSlot, setTimeSlot] = useState()
@@ -98,7 +101,8 @@ export default function BookAppointment({ doctorid }) {
     const response=await axios.post("http://localhost:3001/user/Details/Doctor/BookAppointment",bookingData,verifytoken)
       // console.log(response.data.appointment);
        if(response.status===200){
-        toast("Booking succes")
+        
+        toast("Booking confirmation send")
         setSubmitted(true)
        }
 
@@ -158,7 +162,7 @@ export default function BookAppointment({ doctorid }) {
           </DialogHeader>
           <DialogFooter className="sm:justify-end">
             <DialogClose asChild>
-              <>
+              <div className='mb-5'>
                 
                 <Button type="button" disabled={!(date && selectedSlot) || submitted} onClick={() => {
                   
@@ -166,7 +170,7 @@ export default function BookAppointment({ doctorid }) {
                    }}>
                   {submitted ? 'Submited' : 'Submit'}
                 </Button>
-              </>
+              </div>
             </DialogClose>
           </DialogFooter>
         </DialogContent>

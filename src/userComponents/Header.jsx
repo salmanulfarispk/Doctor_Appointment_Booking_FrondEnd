@@ -93,7 +93,8 @@ const Header = () => {
   </PopoverTrigger>
   <PopoverContent className='w-44'>
     <ul className='flex flex-col gap-1 font-mono'>
-      <li className='cursor-pointer hover:bg-slate-100 p-2 rounded-md'>My Booking</li>
+      <li className='cursor-pointer hover:bg-slate-100 p-2 rounded-md'onClick={() => navigate("/mybooking")}
+      >My Booking</li>
       <li onClick={logout} className='cursor-pointer hover:bg-slate-100 p-2 rounded-md'>Logout</li>
 
     </ul>
