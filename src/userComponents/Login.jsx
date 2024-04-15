@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 
 
 
+
 const Login = () => {
    const [showRegisterModal, setShowRegisterModal] = useState(false);
 
@@ -99,6 +100,7 @@ const Login = () => {
 
 
   return (
+    
     <div>
     
 
@@ -199,7 +201,7 @@ const Login = () => {
         <p className="text-sm text-gray-500">
           No account ? 
           <a className="underline text-blue-900 cursor-pointer ms-1" onClick={handleSignUpClick}>Sign up</a>
-          <a className='ms-3 text-blue-900 hover:cursor-pointer'> Or&nbsp;&nbsp; sign in with <Google/></a>
+          <a className='lg:ms-3 sm:ms-0 text-blue-900 hover:cursor-pointer'> Or&nbsp;&nbsp; sign in with <Google/></a>
             
         </p>
       
@@ -217,8 +219,8 @@ const Login = () => {
 {showRegisterModal && <Register setShowRegisterModal={setShowRegisterModal} />}
   
       </div>
-
-
+    
+      
 
     
   )
