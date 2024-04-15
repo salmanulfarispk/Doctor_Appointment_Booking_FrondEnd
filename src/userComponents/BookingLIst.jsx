@@ -1,13 +1,31 @@
-import React from 'react'
 import { Calendar } from 'lucide-react';
 import { Clock } from 'lucide-react';
 import { MapPin } from 'lucide-react';
-
 import moment from 'moment';
-import { Button } from '@/components/ui/button';
+import { CancelAppointment } from './CancelAppointment';
+import axios from 'axios';
 
-export default function BookingLIst({bookingList,expired}) {
 
+export default function BookingLIst({bookingList,expired,updatedRecord}) {
+
+  const onDeleteBooking=async(appointmentid)=>{
+     try{
+     const token={
+      headers:{
+        Authorization:`${localStorage.getItem("jwt")}`
+      }
+     };
+
+     const response= await axios.delete(`http://localhost:3001/user/cancelAppointment/${appointmentid}`,token)
+       if(response.status==200){
+        updatedRecord()
+       }
+
+     }catch(err){
+      console.log(err);
+     }
+  }
+   
   return (
     <div>
    {bookingList&&bookingList.map((item,index)=>(
@@ -21,7 +39,7 @@ export default function BookingLIst({bookingList,expired}) {
      <div className='flex flex-col gap-2 w-full'>
       <h2 className='font-bold text-[18px] items-center flex justify-between'>{item.doctorName}
          
-         {!expired&&<Button variant='outline' className='text-primary border-primary'>Cancel Appointment</Button>}
+         {!expired&&<CancelAppointment onContinueClick={()=>onDeleteBooking(item.AppointmentId)}/>}
       
       </h2>
       <h2 className='flex gap-2 font-mono text-gray-500'><MapPin className='text-primary h-6 w-5' />{item.hospital}</h2>

@@ -104,6 +104,7 @@ export default function BookAppointment({ doctorid }) {
         
         toast("Booking confirmation send")
         setSubmitted(true)
+        
        }
 
      }catch(err){

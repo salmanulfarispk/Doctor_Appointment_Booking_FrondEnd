@@ -4,11 +4,12 @@ import BookingLIst from './BookingLIst';
 import Header from './Header';
 import axios from 'axios';
 
+
 export default function MyBooking() {
   const [bookingList,setBookingList] =useState([]);
 
    
-  const user=localStorage.getItem("userId")
+  const userid=localStorage.getItem("userId")
 
   const getUserBookingList = async () => {
     try {
@@ -17,7 +18,7 @@ export default function MyBooking() {
           Authorization: `${localStorage.getItem("jwt")}`
         }
       };
-      const response = await axios.get("http://localhost:3001/user/users/bookingdetails", verifyToken);
+      const response = await axios.get(`http://localhost:3001/user/bookingdetails/${userid}`, verifyToken);
       if (response.status === 200) { 
         setBookingList(response.data.datas)
         
@@ -29,8 +30,8 @@ export default function MyBooking() {
   };
 
   useEffect(() => {
-    user&&getUserBookingList();
-  }, [user]);
+    getUserBookingList();
+  }, [bookingList]);
 
   const filterUserBooking = (type) => {
     const currentDate = new Date();
@@ -57,6 +58,7 @@ export default function MyBooking() {
           </TabsList>
           <TabsContent value="Upcoming">
             <BookingLIst bookingList={filterUserBooking('Upcoming')} 
+              updatedRecord={()=>getUserBookingList()}
              expired={false}
              />
           </TabsContent>
