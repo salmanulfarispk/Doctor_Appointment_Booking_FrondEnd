@@ -113,9 +113,7 @@ export default function BookAppointment({ doctorid }) {
     
     
     }
-
   
-
   return (
     <div>
        
